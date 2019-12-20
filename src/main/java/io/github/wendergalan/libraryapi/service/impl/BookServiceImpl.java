@@ -60,4 +60,9 @@ public class BookServiceImpl implements io.github.wendergalan.libraryapi.service
         );
         return repository.findAll(example, pageRequest);
     }
+
+    @Override
+    public Optional<Book> getBookByIsbn(String isbn) {
+        return null;
+    }
 }
