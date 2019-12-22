@@ -5,6 +5,7 @@ import io.github.wendergalan.libraryapi.api.dto.BookDTO;
 import io.github.wendergalan.libraryapi.exception.BusinessException;
 import io.github.wendergalan.libraryapi.model.entity.Book;
 import io.github.wendergalan.libraryapi.service.BookService;
+import io.github.wendergalan.libraryapi.service.LoanService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -44,7 +45,10 @@ public class BookControllerTest {
     MockMvc mvc;
 
     @MockBean
-    private BookService service;
+    BookService service;
+
+    @MockBean
+    LoanService loanService;
 
     @Test
     @DisplayName("Deve criar um livro com sucesso.")

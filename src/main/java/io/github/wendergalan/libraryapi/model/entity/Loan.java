@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.LocalDate;
 
 @Data
@@ -24,11 +25,15 @@ public class Loan {
     @Column(name = "customer", length = 100)
     private String customer;
 
+    @Column(name = "customer_email", length = 100)
+    @Email
+    private String customerEmail;
+
     @JoinColumn(name = "id_book")
     @ManyToOne
     private Book book;
 
-    @Column(name = "loanDate")
+    @Column(name = "loan_date")
     private LocalDate loanDate;
 
     @Column(name = "returned")

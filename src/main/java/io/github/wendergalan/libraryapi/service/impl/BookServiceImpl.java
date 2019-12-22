@@ -3,6 +3,7 @@ package io.github.wendergalan.libraryapi.service.impl;
 import io.github.wendergalan.libraryapi.exception.BusinessException;
 import io.github.wendergalan.libraryapi.model.entity.Book;
 import io.github.wendergalan.libraryapi.model.repository.BookRepository;
+import io.github.wendergalan.libraryapi.service.BookService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class BookServiceImpl implements io.github.wendergalan.libraryapi.service.BookService {
+public class BookServiceImpl implements BookService {
 
     private BookRepository repository;
 
