@@ -8,6 +8,8 @@ import io.github.wendergalan.libraryapi.model.entity.Book;
 import io.github.wendergalan.libraryapi.model.entity.Loan;
 import io.github.wendergalan.libraryapi.service.BookService;
 import io.github.wendergalan.libraryapi.service.LoanService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -24,6 +26,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/loans")
 @RequiredArgsConstructor
+@Api("Loan API")
 public class LoanController {
 
     private final LoanService service;
@@ -32,6 +35,7 @@ public class LoanController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation("Create a loan")
     public Long create(@RequestBody LoanDTO dto) {
         Book book = bookService.getBookByIsbn(dto.getIsbn())
                 .orElseThrow(() ->
@@ -47,6 +51,7 @@ public class LoanController {
     }
 
     @PatchMapping("{id}")
+    @ApiOperation("Update parameter \"returned\" of loan")
     public void returnBook(
             @PathVariable Long id,
             @RequestBody ReturnedLoanDTO dto) {
@@ -56,6 +61,7 @@ public class LoanController {
     }
 
     @GetMapping
+    @ApiOperation("Obtains a loan by parameters")
     public Page<LoanDTO> find(LoanFilterDTO dto, Pageable pageRequest) {
         Page<Loan> result = service.find(dto, pageRequest);
         List<LoanDTO> loans = result.getContent().stream().map(entity -> {
