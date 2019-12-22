@@ -17,21 +17,21 @@ import java.util.List;
 @EnableScheduling
 public class LibraryApiApplication {
 
-    @Autowired
-    private EmailService emailService;
+//    @Autowired
+//    private EmailService emailService;
 
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
 
-    @Bean
-    public CommandLineRunner runner() {
-        return args -> {
-            List<String> emails = Collections.singletonList("library-api-29322c@inbox.mailtrap.io");
-            emailService.sendEmails("Testando serviço de emails.", emails);
-        };
-    }
+//    @Bean
+//    public CommandLineRunner runner() {
+//        return args -> {
+//            List<String> emails = Collections.singletonList("library-api-29322c@inbox.mailtrap.io");
+//            emailService.sendEmails("Testando serviço de emails.", emails);
+//        };
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(LibraryApiApplication.class, args);
