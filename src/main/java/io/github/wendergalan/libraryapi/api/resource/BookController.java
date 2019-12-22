@@ -9,6 +9,7 @@ import io.github.wendergalan.libraryapi.service.LoanService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/books")
 @RequiredArgsConstructor
+@Slf4j
 @Api("Book API")
 public class BookController {
 
@@ -35,6 +37,7 @@ public class BookController {
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Create a book")
     public BookDTO create(@RequestBody @Valid BookDTO dto) {
+        log.info("CREATE A BOOK FOR ISBN: {}", dto.getIsbn());
         Book entity = modelMapper.map(dto, Book.class);
 
         entity = service.save(entity);
@@ -45,6 +48,7 @@ public class BookController {
     @GetMapping("/{id}")
     @ApiOperation("Obtains a book details by id")
     public BookDTO get(@PathVariable Long id) {
+        log.info("OBTAINS DETAILS FOR BOOK ID: {}", id);
         return service
                 .getById(id)
                 .map(book -> modelMapper.map(book, BookDTO.class))
@@ -55,6 +59,7 @@ public class BookController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @ApiOperation("Delete a book details by id")
     public void delete(@PathVariable Long id) {
+        log.info("DELETE BOOK OF ID: {}", id);
         Book book = service
                 .getById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -64,6 +69,7 @@ public class BookController {
     @PutMapping("/{id}")
     @ApiOperation("Update a book")
     public BookDTO update(@PathVariable Long id, BookDTO dto) {
+        log.info("UPDATE BOOK OF ID: {}", id);
         return service
                 .getById(id)
                 .map(book -> {
