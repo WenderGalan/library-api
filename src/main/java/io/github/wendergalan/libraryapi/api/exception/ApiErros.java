@@ -2,6 +2,7 @@ package io.github.wendergalan.libraryapi.api.exception;
 
 import io.github.wendergalan.libraryapi.exception.BusinessException;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,6 +19,10 @@ public class ApiErros {
 
     public ApiErros(BusinessException ex) {
         this.errors = Collections.singletonList(ex.getMessage());
+    }
+
+    public ApiErros(ResponseStatusException ex) {
+        this.errors = Collections.singletonList(ex.getReason());
     }
 
     public List<String> getErrors() {
