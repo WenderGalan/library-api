@@ -21,3 +21,6 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 mvn spring-boot:run
 ```
 
+## Testing the application
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://library-api-galan.herokuapp.com/swagger-ui.html)
+
