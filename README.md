@@ -1,5 +1,6 @@
 # Library API
 [![Build Status](https://travis-ci.org/WenderGalan/library-api.svg?branch=master)](https://travis-ci.org/WenderGalan/library-api)
+[![codecov](https://codecov.io/gh/WenderGalan/library-api/branch/master/graph/badge.svg)](https://codecov.io/gh/WenderGalan/library-api)
 
 RESTFUL API for Library and Loan Design.
 
